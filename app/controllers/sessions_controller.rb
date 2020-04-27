@@ -39,4 +39,17 @@ class SessionsController < ApplicationController
     reset_session
     render json: { status: 200, logged_out: true }
   end
+
+  def update
+    user = User.find_by(username: params["user"]["username"])
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    bio = params[:bio]
+    birthday = params[:birthday]
+    user.first_name = first_name
+    user.last_name = last_name
+    user.bio = bio
+    user.birthday = birthday
+    user.save!
+  end
 end

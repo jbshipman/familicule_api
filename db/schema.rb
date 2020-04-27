@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 1) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthday"
+    t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

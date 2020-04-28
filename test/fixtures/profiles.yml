@@ -3,13 +3,13 @@
 one:
   first_name: MyString
   last_name: MyString
-  birthday: 2020-04-27
   bio: MyString
-  user_id: 1
+  birthday: 2020-04-27
+  reference: 
 
 two:
   first_name: MyString
   last_name: MyString
-  birthday: 2020-04-27
   bio: MyString
-  user_id: 1
+  birthday: 2020-04-27
+  reference: 

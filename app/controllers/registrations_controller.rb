@@ -14,9 +14,18 @@ class RegistrationsController < ApplicationController
     # pass user object
     if user
       session[:user_id] = user.id
+      # create profile here
+      profile = Profile.create!(
+        first_name: "fist name",
+        last_name: "last_name",
+        bio: "Interesting life stuff here.",
+        birthday: "YYYY-MM-DD",
+        user_id: user.id,
+      )
       render json: {
         status: :created,
         user: user,
+        profile: profile,
       }
     else
       render json: { status: 500 }

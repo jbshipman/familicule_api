@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  include CurrentUserConcern
+  # include CurrentUserConcern
 
   # def create
   #   # grab current_user id to build a profile onto

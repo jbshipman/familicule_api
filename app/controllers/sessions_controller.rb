@@ -8,14 +8,18 @@ class SessionsController < ApplicationController
     user = User
       .find_by(username: params["user"]["username"])
       .try(:authenticate, params["user"]["password"])
+    profile = Profile.find_by(user_id: user.id)
 
     # conditional to render json object of a status notification, a boolean for logged in, and the user model data
     if user
       session[:user_id] = user.id
+      # profile = Profile.find_by(id: user.id)
+
       render json: {
         status: :created,
         logged_in: true,
         user: user,
+        profile: profile,
       }
     else
       render json: { status: 401 }
@@ -28,6 +32,7 @@ class SessionsController < ApplicationController
       render json: {
         logged_in: true,
         user: @current_user,
+        profile: @current_profile,
       }
     else
       render json: {

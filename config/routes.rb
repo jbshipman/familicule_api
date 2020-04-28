@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   resources :registrations, only: [:create]
 
-  resources :profiles, only: [:update]
-  # resources :users, only: [:show] do
-  # end
+  resources :users, only: [:show] do
+    resources :profiles, only: [:update]
+  end
 
   root to: "static#home"
 end

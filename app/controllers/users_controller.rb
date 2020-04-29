@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   # include CurrentUserConcern
 
+  # def show
+  #   user = User.find_by(id: params[:id)
+  #   render json: user
+  # end
+
+  def show
+    user = User.find_by(id: params[:id])
+    render json: user
+  end
+
   # def update
   #   user = User.find_by(id: params[:id])
   #   first_name = params[:first_name]

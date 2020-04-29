@@ -5,7 +5,7 @@ module CurrentUserConcern
     before_action :set_current_user
   end
 
-  # checks if sessions has a current user
+  # checks if session has a current user
   def set_current_user
     if session[:user_id]
       @current_user = User.find(session[:user_id])

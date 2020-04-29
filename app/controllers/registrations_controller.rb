@@ -16,8 +16,8 @@ class RegistrationsController < ApplicationController
       session[:user_id] = user.id
       # create profile here
       profile = Profile.create!(
-        first_name: "fist name",
-        last_name: "last_name",
+        firstname: "fist name",
+        lastname: "last name",
         bio: "Interesting life stuff here.",
         birthday: "YYYY-MM-DD",
         user_id: user.id,

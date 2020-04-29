@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: @current_user,
         profile: @current_profile,
+      # profile: profile,
       }
     else
       render json: {

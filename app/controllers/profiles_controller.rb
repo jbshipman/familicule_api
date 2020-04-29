@@ -1,29 +1,35 @@
 class ProfilesController < ApplicationController
-  # include CurrentUserConcern
+  include CurrentUserConcern
 
-  # def create
-  #   # grab current_user id to build a profile onto
-  #   # try is built in
-  #   # {profile: {first_name, last_name, ....}}
-  #   profile = Profile.create!(
-  #     # first_name: params["profile"]["first_name"],
-  #     first_name: "fist name",
-  #     last_name: "last_name",
-  #     bio: "Interesting life stuff here.",
-  #     birthday: "YYYY-MM-DD",
-  #     user_id: params["profile"][@current_user],
-  #   )
+  def show
+    profile = Profile.find_by(id: params[:id])
+    render json: profile
+  end
 
-  #   # conditional to render json object of a status notification, a boolean for logged in, and the user model data
-  #   if profile
-  #     session[:user_id] = user.id
-  #     render json: {
-  #       status: :created,
-  #       logged_in: true,
-  #       profile: profile,
-  #     }
-  #   else
-  #     render json: { status: 401 }
-  #   end
-  # end
+  def update
+    # grab current_user id to build a profile onto
+    # try is built in
+    # {profile: {firstname, lastname, ....}}
+    profile = Profile.find_by(id: params[:id])
+    profile.update(
+      firstname: params["profile"]["firstname"],
+      lastname: params["profile"]["lastname"],
+      bio: params["profile"]["bio"],
+      birthday: params["profile"]["birthday"],
+      # user_id: @current_user.id,
+    )
+
+    # conditional to render json object of a status notification, a boolean for logged in, and the user model data
+    if profile
+      session[:user_id] = @current_user.id
+      render json: {
+        status: :updated,
+        logged_in: true,
+        user: @current_user,
+        profile: @current_profile,
+      }
+    else
+      render json: { status: 401 }
+    end
+  end
 end

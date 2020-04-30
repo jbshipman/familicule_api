@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cules
   resources :sessions, only: [:create, :update]
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"

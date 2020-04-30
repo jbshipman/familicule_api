@@ -1,0 +1,2 @@
+module CulesHelper
+end

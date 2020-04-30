@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   # include CurrentUserConcern
 
-  # def show
-  #   user = User.find_by(id: params[:id)
-  #   render json: user
-  # end
+  def index
+    user = User.all
+    render json: user
+  end
 
   def show
     user = User.find_by(id: params[:id])
@@ -23,4 +23,10 @@ class UsersController < ApplicationController
   #   user.birthday = birthday
   #   user.save!
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :bio, :birthday, :cule_ids => [])
+  end
 end

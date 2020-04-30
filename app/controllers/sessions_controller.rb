@@ -10,6 +10,10 @@ class SessionsController < ApplicationController
       .try(:authenticate, params["user"]["password"])
     profile = Profile.find_by(user_id: user.id)
 
+    # c_name = Cule.find_by(name: user.username)
+    # c_id = UserCule.find_by(id: c_name.id)
+    cule = Cule.find_by(name: user.username)
+
     # conditional to render json object of a status notification, a boolean for logged in, and the user model data
     if user
       session[:user_id] = user.id
@@ -20,6 +24,7 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: user,
         profile: profile,
+        cule: cule,
       }
     else
       render json: { status: 401 }
@@ -33,7 +38,7 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: @current_user,
         profile: @current_profile,
-      # profile: profile,
+        cule: @current_user_cule,
       }
     else
       render json: {

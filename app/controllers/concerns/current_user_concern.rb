@@ -10,6 +10,7 @@ module CurrentUserConcern
     if session[:user_id]
       @current_user = User.find(session[:user_id])
       @current_profile = Profile.find_by(user_id: session[:user_id])
+      @current_user_cule = @current_user.cules
     end
   end
 end

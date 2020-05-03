@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  get 'user_cules/index'
-  get 'user_cules/show'
-  get 'user_cules/new'
-  get 'user_cules/create'
-  get 'user_cules/edit'
-  get 'user_cules/update'
-  get 'user_cules/destroy'
   resources :users, only: [:index, :show]
   resources :user_cules
   resources :cules, only: [:index, :show, :create]
+
+  get :users_in_cule, to: "cules#users_in_cule"
 
   resources :sessions, only: [:create, :update]
   delete :logout, to: "sessions#logout"

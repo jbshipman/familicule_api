@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   # model associations
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :user_cules
   has_many :cules, through: :user_cules
 end

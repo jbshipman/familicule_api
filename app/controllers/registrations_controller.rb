@@ -31,21 +31,21 @@ class RegistrationsController < ApplicationController
       # default genereated cule will take
       # User.username as it's name
 
-      cule = Cule.create!(
-        name: user.username,
-      )
+      # cule = Cule.create!(
+      #   name: user.username,
+      # )
 
-      c_name = Cule.find_by(name: user.username)
-      user_cule = UserCule.create!(
-        user_id: user.id,
-        cule_id: c_name.id,
-      )
+      # c_name = Cule.find_by(name: user.username)
+      # user_cule = UserCule.create!(
+      #   user_id: user.id,
+      #   cule_id: c_name.id,
+      # )
 
       render json: {
         status: :created,
         user: user,
         profile: profile,
-        cule: cule,
+      # cule: cule,
       }
     else
       render json: { status: 500 }

@@ -5,4 +5,5 @@ class Cule < ApplicationRecord
   # associations of model
   has_many :user_cules
   has_many :users, through: :user_cules
+  has_many :events, dependent: :destroy
 end

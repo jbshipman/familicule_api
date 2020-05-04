@@ -11,6 +11,7 @@ module CurrentUserConcern
       @current_user = User.find(session[:user_id])
       @current_profile = Profile.find_by(user_id: session[:user_id])
       @current_user_cule = @current_user.cules
+      @current_cule_events = Event.where(cule_id: @current_user.cules.ids)
     end
   end
 end

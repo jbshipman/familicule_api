@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 5) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.date "date"
-    t.time "time"
+    t.string "date"
+    t.string "time"
     t.string "location"
     t.text "details"
     t.bigint "cule_id"
